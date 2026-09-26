@@ -2,7 +2,7 @@ import {test, expect} from '../src/fixtures/pagefixtures'
 
 test.beforeEach('setup',async({loginPage,homePage})=>{
     await loginPage.goToLoginPage()
-    await loginPage.doLogin('rapanomik@gmail.com','vicky123')
+    await loginPage.doLogin(process.env.USERNAME!,process.env.PASSWORD!)
 })
 
 test('verify 1',async({homePage})=>{

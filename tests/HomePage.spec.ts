@@ -9,7 +9,7 @@ let homePage:HomePage
 test.beforeEach('setup',async({page})=>{
     loginPage = new LoginPage(page)
     await loginPage.goToLoginPage()
-    await loginPage.doLogin('rapanomik@gmail.com','vicky123')
+    await loginPage.doLogin(process.env.USERNAME!,process.env.PASSWORD!)
     homePage= new HomePage(page)
 })
 
