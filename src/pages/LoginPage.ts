@@ -8,6 +8,7 @@ export class LoginPage extends BasePage{
     private readonly loginButton:Locator
     private readonly forgotPasswordLink:Locator
     private readonly logoImage:Locator
+    private readonly loginError:Locator
 
     constructor(page:Page)
     {
@@ -17,6 +18,7 @@ export class LoginPage extends BasePage{
         this.loginButton=page.getByRole('button',{name:'Login'})
         this.forgotPasswordLink=page.getByRole('link',{name:'Forgotten Password'}).first()
         this.logoImage = page.getByAltText('naveenopencart')
+        this.loginError=page.locator('.alert')
     }
 
     async goToLoginPage():Promise<void>
@@ -39,6 +41,11 @@ export class LoginPage extends BasePage{
     async getPageTitle():Promise<string>
     {
         return await this.page.title()
+    }
+
+    async isLoginErrorDisplayed():Promise<boolean>
+    {
+        return await this.loginError.isVisible()
     }
 
 
